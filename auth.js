@@ -9,7 +9,7 @@ function auth(req,res,next){
             message: "Incorrect Credentials"
         })
     } else{
-        req.email = decodedData.email;
+        req.id = decodedData.id;
         next();
     }
 }

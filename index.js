@@ -24,7 +24,7 @@ app.post('/signup',async function(req,res){
     res.json({
         message: "You are signed up"
     })
-})
+});
 
 app.post('/signin',async function(req,res){
     const email = req.body.email;
@@ -48,5 +48,32 @@ app.post('/signin',async function(req,res){
             message: "Incorrect credentials"
         })
     }
-    
-})
+});
+
+app.post('/todo',auth, async function(req,res){
+    const task = req.body.task;
+    const done = req.body.done;
+    const userId = req.id;
+
+    await TodoModel.create({
+        userID:userId,
+        task: task,
+        done: done
+    })
+
+    res.json({
+        message: "todo added successfully"
+    })
+});
+
+app.get('/todos',auth,async function(req,res){
+    const userId = req.id;
+    const todos = await TodoModel.find({
+        userId : userId
+    });
+    res.json({
+        todos
+    });
+});
+
+app.listen(3000);
