@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const { auth, JWT_SECRET } = require('./auth')
 const { UserModel, TodoModel } = require('./db')
 
-mongoose.connect("mongodb+srv://sahil2005:N8WJYc1k39faUGgL@cluster0.ti11j.mongodb.net/todos-week7")
+mongoose.connect("")
 
 const app = express();
 app.use(express.json());
